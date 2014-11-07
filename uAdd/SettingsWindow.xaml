@@ -1,0 +1,123 @@
+﻿<Window x:Class="uAdd.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:res="clr-namespace:uAdd.Properties"        
+        Title="{x:Static res:Resources.SettingsWindowTitle}"
+        
+        Height="350" MinHeight="250" MaxHeight="600" MinWidth="380" MaxWidth="600"  SizeToContent="WidthAndHeight" 
+        Icon="utorrent.ico"
+        WindowStartupLocation="CenterScreen" >
+    
+    <Grid Name="MainGrid" Height="auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <Grid.ColumnDefinitions>            
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />            
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Expander Name="HostGroup" Grid.Row="0" DockPanel.Dock="Top"  Header="{x:Static res:Resources.SettingsHostGroupTitle}" Margin="2,3,2,2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsExpanded="True">
+            <Grid  Name="SettingGridMain" Height="auto" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />                                        
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Name="SettingsHostLabel" Content="{x:Static res:Resources.SettingsHostTitle}"  VerticalAlignment="Center" Width="auto" HorizontalAlignment="Right" Margin="10,2,2,2" Padding="2" VerticalContentAlignment="Center"></Label>
+                <Label Grid.Row="1" Grid.Column="0" Name="SettingsUserLabel" Content="{x:Static res:Resources.SettingsUserTitle}"  VerticalAlignment="Center" Width="auto" HorizontalAlignment="Right" Margin="10,2,2,2" Padding="2" VerticalContentAlignment="Center"></Label>
+                <Label Grid.Row="2" Grid.Column="0" Name="SettingsPasswordLabel" Content="{x:Static res:Resources.SettingsPasswordTitle}"  VerticalAlignment="Center" Width="auto" HorizontalAlignment="Right" Margin="10,2,2,2" Padding="2" VerticalContentAlignment="Center"></Label>
+
+                <TextBox Name ="SettingsHostBox" Grid.Row="0" Grid.Column="1" Text="{Binding Host, Mode=TwoWay}"  Margin="3,2,2,2" VerticalAlignment="Center" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" DataContext="{Binding}"></TextBox>
+                <TextBox Name ="SettingsUserBox" Grid.Row="1" Grid.Column="1" Text="{Binding User, Mode=TwoWay}"  Margin="3,2,2,2" VerticalAlignment="Center" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"></TextBox>
+                <PasswordBox  Name ="SettingsPasswordBox" Grid.Row="2" Grid.Column="1" Margin="3,2,2,2" VerticalAlignment="Center" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"></PasswordBox>
+                
+            </Grid>
+        </Expander>
+
+        <Expander Name="AdditionalSettingsGroup" Grid.Row="1" DockPanel.Dock="Top"  Header="{x:Static res:Resources.SettingAdditionalGroupTitle}" Margin="2,3,2,2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <DockPanel Margin="0,5,0,0"  LastChildFill="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <CheckBox Name="AddSettingsFailedRetriesCheck" DockPanel.Dock="Top" VerticalAlignment="Top" IsChecked="{Binding FailedRetries,Mode=TwoWay}" Content="{x:Static res:Resources.AddSettingsFailedRetries}" Margin="10,4,2,2" VerticalContentAlignment="Center"></CheckBox>                
+                <CheckBox Name="AddSettingsNotAllowEmptyCategoryCheck" DockPanel.Dock="Top" VerticalAlignment="Top" IsChecked="{Binding NotAllowEmptyCategory, Mode=TwoWay}" Content="{x:Static res:Resources.AddSettingsNotAllowEmptyCategory}" Margin="10,4,2,2" VerticalContentAlignment="Center"></CheckBox>
+                <CheckBox Name="AddSettingsNotAddDefaultCategoryCheck" DockPanel.Dock="Top" VerticalAlignment="Top" IsChecked="{Binding NotAddDefaultCategory, Mode=TwoWay}" Content="{x:Static res:Resources.AddSettingsNotAddDefaultCategory}" Margin="10,4,2,2" VerticalContentAlignment="Center"></CheckBox>
+                <CheckBox Name="AddSettingsCategoryBoldFontCheck" DockPanel.Dock="Top" VerticalAlignment="Top" IsChecked="{Binding BoldFontCategory, Mode=TwoWay}" Content="{x:Static res:Resources.AddSettingsBoldFontCategory}" Margin="10,4,2,2" VerticalContentAlignment="Center"></CheckBox>
+                <CheckBox Name="AddSettingsCategoryBigFontCheck" DockPanel.Dock="Top" VerticalAlignment="Top" IsChecked="{Binding BigFontCategory, Mode=TwoWay}" Content="{x:Static res:Resources.AddSettingsBigFontCategory}" Margin="10,4,2,2" VerticalContentAlignment="Center"></CheckBox>
+            </DockPanel>
+        </Expander>
+
+        <Expander Name="TabGroup"  Grid.Row="2" DockPanel.Dock="Top"  Header="{x:Static res:Resources.SettingsCategoriesTableTitle}" Margin="2,3,2,2"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsExpanded="True">
+
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <ToolBarTray Grid.Row="0" Grid.Column="0" DockPanel.Dock="Top" Margin="3,1,4,0" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+                    <ToolBar Name="CategoriesGridToolbar" VerticalAlignment="Top" UseLayoutRounding="False" HorizontalAlignment="Stretch" >
+                        <Button Name="BtnCategoriesGridCommandAdd" Visibility="Visible"  Click="CategoriesGridCommandAdd" ToolTip="{x:Static res:Resources.SettingsCategoriesCommandAdd}">
+                            <Image Source="add.ico" Height="16" Width="16"></Image>
+                        </Button>
+                        <Button Visibility="Visible" Click="CategoriesGridCommandDelete" ToolTip="{x:Static res:Resources.SettingsCategoriesCommandDelete}">
+                            <Image Source="cancel.ico" Height="16" Width="16"></Image>
+                        </Button>
+                        <Button  Visibility="Visible" Click="CategoriesGridCommandUp" ToolTip="{x:Static res:Resources.SettingsCategoriesCommandMoveUp}">
+                            <Image Source="up.ico" Height="16" Width="16"></Image>
+                        </Button>
+                        <Button  Visibility="Visible" Click="CategoriesGridCommandDown" ToolTip="{x:Static res:Resources.SettingsCategoriesCommandMoveDown}">
+                            <Image Source="down.ico" Height="16" Width="16"></Image>
+                        </Button>
+                        <Separator></Separator>
+                        <Button Visibility="Visible" Click="CategoriesGridCommandLoadFromFile" ToolTip="{x:Static res:Resources.SettingsCategoriesCommandLoadFromFile}">
+                            <Image Source="folderalt.ico" Height="16" Width="16" ></Image>
+                        </Button>
+                        <Button Visibility="Visible" Click="CategoriesGridCommandLoadFromLink" ToolTip="{x:Static res:Resources.SettingsCategoriesCommandLoadFromLink}">
+                            <Image Source="globealt.ico" Height="16" Width="16" ></Image>
+                        </Button>
+
+                    </ToolBar>
+                </ToolBarTray>
+              
+                <DataGrid Name="CategoriesDataGrid" Grid.Row="1" Grid.Column="0" DockPanel.Dock="Top" Margin="3,0,4,3" ItemsSource="{Binding CategoriesData, Mode=TwoWay}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  AutoGenerateColumns="False" HeadersVisibility="Column" CanUserAddRows="True" CanUserDeleteRows="True" CanUserResizeRows="True" SelectionMode="Single" Padding="3" BorderThickness="1"  HorizontalGridLinesBrush="#FFF0F0F0" VerticalGridLinesBrush="#FFF0F0F0" Background="{StaticResource {x:Static SystemColors.WindowBrushKey}}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Path=CategoryName}" Header="{x:Static res:Resources.SettingsCategoriesColumnCategoryName}" Width="120" />
+                        <DataGridTextColumn Binding="{Binding Path=TorrentDirectoryListNumber}" Header="{x:Static res:Resources.SettingsCategoriesColumnTorrentDirectoryListNumber}" Width="auto"/>
+                        <DataGridTextColumn Binding="{Binding Path=Comment}" Header="{x:Static res:Resources.SettingsCategoriesColumnComment}" Width="auto"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                
+            </Grid>
+            
+        </Expander>            
+         
+    
+        <Grid  Grid.Row="3" Name="ButtonGrid" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Height="auto" Width="auto" Margin="0,7,0,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            
+            <Button Name="SettingsTestBtn" Content="{x:Static res:Resources.TestButtonText}" Grid.Row="0" Grid.Column="1" Margin="3,1,3,1"  Height="auto"  Width="auto" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="SettingsTestBtn_Click" Padding="6,2,6,2"/>
+            <Button Name="SettingsOKBtn" Content="{x:Static res:Resources.OKButtonText}" Grid.Row="0" Grid.Column="2" Margin="3,1,3,1"  Height="auto"  Width="auto" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="SettingsOKBtn_Click" Padding="6,2,6,2" IsDefault="True" />
+            <Button Name="SettingsCancelBtn" Content="{x:Static res:Resources.CancelButtonText}" Grid.Row="0" Grid.Column="3" Margin="3,1,3,1"  Height="auto"  Width="auto" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="SettingsCancelBtn_Click" Padding="6,2,6,2" IsCancel="True" />
+        </Grid>
+
+
+
+    </Grid>
+    
+</Window>

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0"?>
+<configuration>
+    <configSections>
+        <sectionGroup name="userSettings" type="System.Configuration.UserSettingsGroup, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+            <section name="uAdd.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false"/>
+        </sectionGroup>
+    </configSections>
+    <userSettings>
+        <uAdd.Properties.Settings>
+            <setting name="Host" serializeAs="String">
+                <value>127.0.0.1:8080</value>
+            </setting>
+            <setting name="User" serializeAs="String">
+                <value>admin</value>
+            </setting>
+            <setting name="Password" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="CategoriesTable" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="FailedRetries" serializeAs="String">
+                <value>False</value>
+            </setting>
+            <setting name="NotAllowEmptyCategory" serializeAs="String">
+                <value>False</value>
+            </setting>
+            <setting name="BoldFontCategory" serializeAs="String">
+                <value>False</value>
+            </setting>
+            <setting name="BigFontCategory" serializeAs="String">
+                <value>False</value>
+            </setting>
+            <setting name="NotAddDefaultCategory" serializeAs="String">
+                <value>False</value>
+            </setting>
+            <setting name="ColumnsServer" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="ShowDownloaded" serializeAs="String">
+                <value>False</value>
+            </setting>
+        </uAdd.Properties.Settings>
+    </userSettings>
+<startup><supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.0"/></startup></configuration>

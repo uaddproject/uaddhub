@@ -1,0 +1,36 @@
+﻿<Window x:Class="uAdd.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:res="clr-namespace:uAdd.Properties"        
+        Title="{x:Static res:Resources.AboutWindowTitle}"
+        WindowStyle ="ToolWindow"
+        Height="250" Width="500" SizeToContent="WidthAndHeight" 
+        Icon="utorrent.ico"
+        WindowStartupLocation="CenterScreen" >
+    
+    <Grid Name="AboutGrid" Height="auto" VerticalAlignment="Stretch" ShowGridLines="false" Margin="10,15,50,15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>                
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />            
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Content="{x:Static res:Resources.AuthorHeaderText}" VerticalAlignment="Center" Width="auto" HorizontalAlignment="Right" VerticalContentAlignment="Center"></Label>        
+        <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Focusable="True" >
+           <Hyperlink Name="AuthorLink" RequestNavigate="AboutLink_RequestNavigate" NavigateUri="mailto:uaddproject@gmail.com">
+                 <Run Text="uaddproject@gmail.com"></Run>
+           </Hyperlink>
+        </TextBlock>
+        <Label Grid.Row="1" Grid.Column="0" Content="{x:Static res:Resources.ProjectSourceHeader}" VerticalAlignment="Center" Width="auto" HorizontalAlignment="Right" VerticalContentAlignment="Center"></Label>        
+        <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Focusable="True" >
+           <Hyperlink Name="AboutLink" RequestNavigate="AboutLink_RequestNavigate" NavigateUri="http://github.com/uaddproject/uadd">
+                    <Run Text="http://github.com/uaddproject/uadd"></Run>
+           </Hyperlink>
+        </TextBlock>
+
+
+    </Grid>
+</Window>
